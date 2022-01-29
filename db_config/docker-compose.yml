@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: pshop
+      POSTGRES_USER: pguser
+      POSTGRES_PASSWORD: secret
+    ports:
+      - '5432:5432'
+    volumes:
+      - ../_postgresdb/:/var/lib/postgresql/data/
+      - ../_db_init/dump/:/docker-entrypoint-initdb.d
+
+
+volumes:
+  _postgresdb:
