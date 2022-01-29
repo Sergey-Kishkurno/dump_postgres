@@ -51,7 +51,7 @@ def download():
         try:
             cursor.execute(query_for_a_table)
 
-            with open(file= table + '.csv', mode='w') as csv_file:
+            with open(file= 'data/'+ table + '.csv', mode='w') as csv_file:
                 cursor.copy_expert(f'COPY {table} TO STDOUT WITH HEADER CSV', csv_file)
 
         except psycopg2.Error as e:
